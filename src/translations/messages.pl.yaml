@@ -1,0 +1,11 @@
+social_media:
+  social_media: Social media
+  add_new_sm_link: Dodaj nowy odnośnik Social Media
+  name: Nazwa
+  css_classname: Nazwa klassy CSS
+  url: Link do profilu społecznościowego
+
+role:
+  role_social_media_view: Social media (przeglądanie)
+  role_social_media_edit: Social media (Edycja)
+  role_social_media_full: Social media (Pełny)

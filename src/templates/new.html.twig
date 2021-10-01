@@ -1,0 +1,9 @@
+{% extends '@TwinElementsAdmin/core/details.html.twig' %}
+
+{% set back_button_link = path('socialmedia_index') %}
+
+{% block title %}{{ "social_media.add_new_sm_link"|translate_admin }}{% endblock %}
+
+{% block buttons %}
+    {{ block('back_button') }}
+{% endblock %}

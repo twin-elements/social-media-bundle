@@ -1,0 +1,52 @@
+{% extends '@TwinElementsAdmin/core/list.html.twig' %}
+
+{% block title %}{{ "social_media.social_media"|translate_admin }}{% endblock %}
+
+{% block buttons %}
+    {% set add_button_link = path('socialmedia_new') %}
+    {{ block('add_button') }}
+{% endblock %}
+
+{% block list %}
+    {{ block('list_ul_begin') }}
+    {{ block('list_li_header_begin') }}
+    {{ block('id_header') }}
+    <div class="col">{{ "social_media.name"|translate_admin }}</div>
+    {{ block('list_changes_header') }}
+    {{ block('circle_header') }}
+    {{ block('move_header') }}
+    {{ block('list_li_header_end') }}
+    {% for social_media_item in socialMedia %}
+        {% set id = social_media_item.id %}
+        {% set circle_active = social_media_item.enable %}
+        {% set createdAt = social_media_item.createdAt %}
+        {% set createdBy = social_media_item.createdBy %}
+        {% set updatedAt = social_media_item.updatedAt %}
+        {% set updatedBy = social_media_item.updatedBy %}
+
+        {{ block('list_li_begin') }}
+        {{ block('id') }}
+        <div class="col">
+            <div class="title">
+                <span>{{ social_media_item.title }}</span>
+                <br>
+                <div class="hidden-bar">
+                    {% if is_granted(constant('TwinElements\\SocialMediaBundle\\Security\\SocialMediaVoter::EDIT'), social_media_item) %}
+                        <a href="{{ path('socialmedia_edit', { 'id': social_media_item.id }) }}">{{ "admin.edit"|translate_admin }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {{ block('changes_box_in_list') }}
+        {{ block('circle') }}
+        {{ block('move') }}
+        {{ block('list_li_end') }}
+    {% else %}
+        {{ block('no_elements') }}
+    {% endfor %}
+    {{ block('list_ul_end') }}
+{% endblock %}
+
+{% block head_js %}
+    {{ block('sortable') }}
+{% endblock %}
