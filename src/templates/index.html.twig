@@ -28,13 +28,12 @@
         {{ block('id') }}
         <div class="col">
             <div class="title">
-                <span>{{ social_media_item.title }}</span>
-                <br>
-                <div class="hidden-bar">
-                    {% if is_granted(constant('TwinElements\\SocialMediaBundle\\Security\\SocialMediaVoter::EDIT'), social_media_item) %}
-                        <a href="{{ path('socialmedia_edit', { 'id': social_media_item.id }) }}">{{ "admin.edit"|translate_admin }}</a>
-                    {% endif %}
-                </div>
+                {% if is_granted(constant('TwinElements\\SocialMediaBundle\\Security\\SocialMediaVoter::EDIT'), social_media_item) %}
+                    {% set editPath = path('socialmedia_edit', { 'id': social_media_item.id }) %}
+                {% endif %}
+                <a {% if editPath is defined %}href="{{ editPath }}"{% endif %}>
+                    <span>{{ social_media_item.title }}</span>
+                </a>
             </div>
         </div>
         {{ block('changes_box_in_list') }}

@@ -12,7 +12,7 @@
     "require": {
         "php": "^7.1.3",
         "symfony/framework-bundle": "^4.4",
-        "twin-elements/admin-bundle": "^1.3"
+        "twin-elements/admin-bundle": "^1.5"
     },
     "autoload": {
         "psr-4": {
@@ -20,6 +20,6 @@
         }
     },
     "conflict": {
-        "twin-elements/admin-bundle": "<1.2"
+        "twin-elements/admin-bundle": "<1.5"
     }
 }
