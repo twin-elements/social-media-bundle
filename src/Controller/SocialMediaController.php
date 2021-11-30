@@ -57,7 +57,7 @@ class SocialMediaController extends AbstractController
                 $em->persist($socialMedia);
                 $em->flush();
 
-                $this->flashes->successMessage();
+                $this->flashes->successMessage($this->adminTranslator->translate('admin.success_operation'));;
                 $this->crudLogger->createLog($socialMedia->getId(), $socialMedia->getTitle());
 
             } catch (\Exception $exception) {
@@ -98,7 +98,7 @@ class SocialMediaController extends AbstractController
 
             try {
                 $this->getDoctrine()->getManager()->flush();
-                $this->flashes->successMessage();
+                $this->flashes->successMessage($this->adminTranslator->translate('admin.success_operation'));;
                 $this->crudLogger->createLog($socialMedia->getId(), $socialMedia->getTitle());
 
             } catch (\Exception $exception) {
@@ -144,7 +144,7 @@ class SocialMediaController extends AbstractController
                 $em->flush();
 
                 $this->crudLogger->createLog($id, $title);
-                $this->flashes->successMessage();
+                $this->flashes->successMessage($this->adminTranslator->translate('admin.success_operation'));;
 
             } catch (\Exception $exception) {
                 $this->flashes->errorMessage($exception->getMessage());

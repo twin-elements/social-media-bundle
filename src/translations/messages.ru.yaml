@@ -1,12 +1,11 @@
-# pages
-pages: Страницы
-new_page: Новая страница
-link_for_preview: Ссылка на предварительный просмотр
-# social media
-social_media: Социальные сети
-add_new_sm_link: Добавить новую ссылку на социальные сети
-# post
-post_categories: Категории записей
-creating_new_post_category: Создание новой категории записей
-post_list: Список записей
-new_post: Новая запись
+social_media:
+  social_media: Социальные сети
+  add_new_sm_link: Добавить новую ссылку на социальные сети
+  name: Название
+  css_classname: Название класса CSS
+  url: Сыылка на профиль
+
+role:
+  role_social_media_view: Social media (просмотр)
+  role_social_media_edit: Social media (редактирование)
+  role_social_media_full: Social media (полный)

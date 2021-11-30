@@ -1,14 +1,11 @@
-# pages
-pages: Pages
-new_page: New page
-link_for_preview: Preview link
-# social media
-social_media: Social media
-add_new_sm_link: Add new Social Media link
-# post
-post_categories: Post categories
-creating_new_post_category: Adding new post category
-post_list: Posts list
-new_post: New post
+social_media:
+  social_media: Social media
+  add_new_sm_link: Add new Social Media link
+  name: Name
+  css_classname: CSS class name
+  url: Link to a social profile
 
 role:
+  role_social_media_view: Social media (view)
+  role_social_media_edit: Social media (edit)
+  role_social_media_full: Social media (full)
