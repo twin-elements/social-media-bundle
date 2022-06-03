@@ -2,7 +2,7 @@
 
 namespace TwinElements\SocialMediaBundle\Form;
 
-use TwinElements\AdminBundle\Service\AdminTranslator;
+use TwinElements\Component\AdminTranslator\AdminTranslator;
 use TwinElements\SocialMediaBundle\Entity\SocialMedia;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

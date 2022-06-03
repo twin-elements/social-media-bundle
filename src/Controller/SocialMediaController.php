@@ -6,9 +6,11 @@ use TwinElements\AdminBundle\Model\CrudControllerTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use TwinElements\Component\ResponseParameterBuilder\ResponseParameterBuilder;
 use TwinElements\SocialMediaBundle\Entity\SocialMedia;
 use TwinElements\SocialMediaBundle\Form\SocialMediaType;
 use TwinElements\SocialMediaBundle\Security\SocialMediaVoter;
+use TwinElements\SortableBundle\SortableResponseParametersPreparer;
 
 /**
  * @Route("socialmedia")
@@ -33,10 +35,12 @@ class SocialMediaController extends AbstractController
             'social_media.social_media' => null
         ]);
 
-        return $this->render('@TwinElementsSocialMedia/index.html.twig', array(
-            'socialMedia' => $socialMedia,
-            'sortable' => SocialMedia::class
-        ));
+        $responseParameters = new ResponseParameterBuilder();
+        $responseParameters->addParameter('socialMedia', $socialMedia);
+
+        SortableResponseParametersPreparer::prepare($responseParameters, SocialMedia::class);
+
+        return $this->render('@TwinElementsSocialMedia/index.html.twig', $responseParameters->getParameters());
     }
 
     /**
