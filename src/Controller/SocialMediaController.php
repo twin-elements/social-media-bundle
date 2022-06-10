@@ -6,6 +6,7 @@ use TwinElements\AdminBundle\Model\CrudControllerTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use TwinElements\Component\CrudLogger\CrudLogger;
 use TwinElements\Component\ResponseParameterBuilder\ResponseParameterBuilder;
 use TwinElements\SocialMediaBundle\Entity\SocialMedia;
 use TwinElements\SocialMediaBundle\Form\SocialMediaType;
@@ -62,7 +63,7 @@ class SocialMediaController extends AbstractController
                 $em->flush();
 
                 $this->flashes->successMessage($this->adminTranslator->translate('admin.success_operation'));;
-                $this->crudLogger->createLog($socialMedia->getId(), $socialMedia->getTitle());
+                $this->crudLogger->createLog(SocialMedia::class, CrudLogger::CreateAction, $socialMedia->getId());
 
             } catch (\Exception $exception) {
                 $this->flashes->errorMessage($exception->getMessage());
@@ -103,7 +104,7 @@ class SocialMediaController extends AbstractController
             try {
                 $this->getDoctrine()->getManager()->flush();
                 $this->flashes->successMessage($this->adminTranslator->translate('admin.success_operation'));;
-                $this->crudLogger->createLog($socialMedia->getId(), $socialMedia->getTitle());
+                $this->crudLogger->createLog(SocialMedia::class, CrudLogger::EditAction, $socialMedia->getId());
 
             } catch (\Exception $exception) {
                 $this->flashes->errorMessage($exception->getMessage());
@@ -142,12 +143,12 @@ class SocialMediaController extends AbstractController
 
             try {
                 $id = $socialMedia->getId();
-                $title = $socialMedia->getTitle();
+
                 $em = $this->getDoctrine()->getManager();
                 $em->remove($socialMedia);
                 $em->flush();
 
-                $this->crudLogger->createLog($id, $title);
+                $this->crudLogger->createLog(SocialMedia::class, CrudLogger::DeleteAction, $id);
                 $this->flashes->successMessage($this->adminTranslator->translate('admin.success_operation'));;
 
             } catch (\Exception $exception) {
